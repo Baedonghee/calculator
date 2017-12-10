@@ -45,28 +45,36 @@ function add(str, num) {
         }else if (str == '+' || str == '-' || str == '÷' || str == '×' ) {
             arrayOp[arrayOp.length-1] = str;
             arrayOpSum[arrayOpSum.length-1] = num;
+            count = false;
         }else if (str == '0' && display.value == '0') {
             display.value = '0';
+            count = false;
         } else {
             if (display.value == 0) {
                 if (str == '.') {
                     str = '0.';
                 }
             }
+            count = false;
             arrayNum.push(String(str));
 
         }
 
     } else if (arrayNum.length != arrayOp.length) {
         if (str == '+' || str == '-' || str == '÷' || str == '×') {
+            count = false;
             arrayOp.push(str);
             arrayOpSum.push(num);
         }else if (str == 'trans'){
+            if(count != true) {
+                count = false;
+            }
             arrayNum[arrayNum.length-1] = String(-arrayNum[arrayNum.length-1]);
         } else {
             if (arrayNum[arrayNum.length-1].length == 10) {
                 alert('입력범위 초과')
             }else {
+                count = false;
                 arrayNum[arrayNum.length-1] += String(str);
             }
         }
@@ -91,7 +99,7 @@ function add(str, num) {
         }
     }
 
-    count = false;
+    
 
 }
 
