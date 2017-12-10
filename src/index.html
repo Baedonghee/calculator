@@ -14,11 +14,13 @@
                 <div class="header">
                     <div style="position: relative;">
                         <div class="circleClose">
+                            <div class="circleText">×</div>
                         </div>
                         <div class="circleMin" onclick="miniButton()">
-                            <div class="circleMinText">-</div>
+                            <div class="circleText">-</div>
                         </div>
                         <div class="circlePlus" onclick="plusButton()">
+                            <div class="circleText">+</div>
                         </div>
                     </div>
                         <div class="calHeaderText">
@@ -27,7 +29,8 @@
                 </div>
                 <div class="main">
                     <div class="calMain">
-                        <input id="display" type="text" class="calMainText" value="0" disabled>
+                        <textarea id="display" rows=2 class="calMainText" value="0" disabled>0</textarea>
+                        <!-- <input id="display" type="text" class="calMainText" value="0" disabled> -->
                     </div>
                 </div>
                 <div class="footer">

@@ -8,21 +8,10 @@ var arrayOpSum = [];
 var z = 0;
 var number = '';
 
-function parentNode(tag) {
-    if (tag.parentNode.id.substring(0,10) != 'calculator') {
-        parentNode(tag.parentNode);
-    }else {
-        number = String(tag.parentNode.id);
-    }
-}
 
-function add(str, num, abc) {
-    // parentNode(abc);
-    // var index = number.substring(10,11);
-    // var inputs = document.getElementsByClassName('calMainText');
-    // var display = inputs[1];
+function add(str, num) {
     var display = document.getElementById('display');
-
+    
     if (str == 'C') {
         display.value = 0;
         arrayOp = [];
@@ -108,7 +97,7 @@ function add(str, num, abc) {
 
 function commify(n) {
 
-    var reg = /(^[+-]?\d+)(\d{3})/;   // 정규식
+    var reg = /(^[+-]?\d+)(\d{3})/;  
 
     while (reg.test(n))
         n = n.replace(reg, '$1' + ',' + '$2');
@@ -129,9 +118,9 @@ function onButton() {
     document.getElementById('miniButton').style.animationFillMode = 'forwards';
 }
 function plusButton() {
-    var test = document.getElementById('calculator0');
-    var test1 = test.cloneNode(true);
-    test1.id = 'calculator' + ++z;
-    document.body.appendChild(test1);
+    var calc = document.getElementById('calculator0');
+    var clone = calc.cloneNode(true);
+    clone.id = 'calculator' + ++z;
+    document.body.appendChild(clone);
 }
 

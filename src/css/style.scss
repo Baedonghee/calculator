@@ -37,7 +37,28 @@ $border_color: #101010;
   -o-box-shadow: 0px 0px 10px 0px $border_color inset;
   -webkit-box-shadow: 0px 0px 10px 0px $border_color inset;
 }
-
+@mixin scaleZero {
+  transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    -moz-transform: scale(0, 0);
+    transform-origin: 10% 95%;
+    -webkit-transform-origin: 10% 95%;
+    -o-transform-origin: 10% 95%;
+    -moz-transform-origin: 10% 95%;
+}
+@mixin scaleMax {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+}
+@mixin circleText($color) {
+  color: $color;
+  text-align: center;
+  padding: 15%;
+  cursor: pointer;
+}
 
 
 
@@ -51,7 +72,6 @@ input[type=button] {
 .container {
   width: 100%;
   height: 100vh;
-  //background-color: white;
   @include gradient(to top, #1f1f1f, #404040);
 }
 
@@ -65,14 +85,17 @@ input[type=button] {
   }
   .circleClose {
     @include miniButton(5vw, 5vw, 5vw, 2%, red);
+    .circleText {
+      @include circleText(red);
+      &:hover {
+        color: $textColor;
+      }
+    }
   }
   .circleMin {
     @include miniButton(5vw, 5vw, 5vw, 8%, orange);
-    .circleMinText {
-      color: orange;
-      text-align: center;
-      padding: 2px;
-      cursor: pointer;
+    .circleText {
+      @include circleText(orange);
       &:hover {
         color: $textColor;
       }
@@ -80,6 +103,12 @@ input[type=button] {
   }
   .circlePlus {
     @include miniButton(5vw, 5vw, 5vw, 14%, green);
+    .circleText {
+      @include circleText(green);
+      &:hover {
+        color: $textColor;
+      }
+    }
   }
 }
 .main {
@@ -98,7 +127,8 @@ input[type=button] {
   }
   .calMainText {
     margin: 20px 0px 20px 0px;
-    font-size: 60px;
+    font-size: 13vw;
+    height: 16vw;
     color: $textColor;
     font-weight: 100;
     text-align: right;
@@ -114,8 +144,8 @@ input[type=button] {
     width: 100%;
     margin-top: 8px;
     border-spacing: 2.2vw 2vh;
-    tr {
-
+    td {
+      width: 25%;
     }
   }
   .buttondiv {
@@ -195,20 +225,18 @@ input[type=button] {
 }
 @keyframes scaleAni {
   from {
-    transform: scale(1, 1);
+    @include scaleMax;
   }
   to {
-    transform: scale(0, 0);
-    transform-origin: 10% 95%;
+    @include scaleZero;
   }
 }
 @keyframes scaleAniBack {
   from {
-    transform: scale(0, 0);
-    transform-origin: 10% 95%;
+    @include scaleZero;
   }
   to {
-    transform: scale(1, 1);
+    @include scaleMax;
   }
 }
 @keyframes opactityAni {
@@ -249,6 +277,12 @@ input[type=button] {
     }
     .circlePlus {
       @include miniButton(25px, 25px, 25px, 14%, green);
+    }
+  }
+  .main {
+    .calMainText {
+      font-size: 65px;
+      height: 80px;
     }
   }
   .tablediv {
